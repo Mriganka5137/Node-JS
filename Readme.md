@@ -27,3 +27,14 @@
     - method joins the specified path segments into one path `path.join`
     - method resolves a sequence of paths or path segments into an absolute path `path.resolve`
     - The resolve method does not care if the folder is present or not, it will create a path string that can be used to create folders if required.
+
+5. FS Module
+    1. Synchronous
+        - const { readFileSync, writeFileSync } = require('fs')
+        - method returns the content of the file `readFileSync`
+        - method creates a new file if the specified file does not exist `writeFileSync`
+    2. Asynchronous
+        - const { readFile, writeFile } = require('fs')
+        - method returns the content of the file `readFile`
+        - method creates a new file if the specified file does not exist `writeFile`
+        - method appends the specified content at the end of the specified file `appendFile`
