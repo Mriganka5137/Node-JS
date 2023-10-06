@@ -12,3 +12,18 @@
     - Modules, Encapsulated Code (only share minimum)
     - To make the module available to other files, we use the module.exports
     - To import the module, we use the require function
+
+3. OS Module
+    - const os = require('os')
+    - info about current user
+    - method returns the system uptime in seconds
+    - info about current os
+    - info about the cpu
+
+4. Path Module
+    - const path = require('path')
+    - separator `path.sep`
+    - method returns the last portion of a path `path.basename`
+    - method joins the specified path segments into one path `path.join`
+    - method resolves a sequence of paths or path segments into an absolute path `path.resolve`
+    - The resolve method does not care if the folder is present or not, it will create a path string that can be used to create folders if required.
