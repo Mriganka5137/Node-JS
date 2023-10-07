@@ -38,3 +38,11 @@
         - method returns the content of the file `readFile`
         - method creates a new file if the specified file does not exist `writeFile`
         - method appends the specified content at the end of the specified file `appendFile`
+
+6. HTTP Module
+    - const http = require('http')
+    - method creates an HTTP server `createServer`
+    - method sends a chunk of the response body `write`
+    - method signals to the server that all of the response headers and body have been sent `end`
+    - method sets the HTTP status for the response `writeHead`
+    - method listens for requests on a given access port `listen`
