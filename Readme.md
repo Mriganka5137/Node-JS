@@ -46,3 +46,73 @@
     - method signals to the server that all of the response headers and body have been sent `end`
     - method sets the HTTP status for the response `writeHead`
     - method listens for requests on a given access port `listen`
+
+
+# Promises, Async, Await
+1. Promises
+    - A Promise is an object representing the eventual completion or failure of an asynchronous operation, like fetching data from a server. It has three states:
+        - Pending: Initial state, neither fulfilled nor rejected.
+        - Fulfilled: Meaning that the operation completed successfully.
+        - Rejected: Meaning that the operation failed.
+    - A Promise is constructed with a function that has two parameters, usually named resolve and reject. You call resolve(value) when the asynchronous operation succeeds, and reject(error) when it fails.
+
+    ```
+        let myPromise = new Promise((resolve, reject) => {
+            let success = true;
+            if(success) {
+                resolve("The operation succeeded");
+            } else {
+                reject("The operation failed");
+            }
+        });
+
+        myPromise.then((message) => {
+        console.log(message);
+        }).catch((message) => {
+        console.log(message);
+        });
+    
+    ```
+
+2. Async
+    - The async keyword is added to functions to tell them to return a promise rather than directly returning the value.
+    - The await keyword is added before a function call to tell the program to wait for the promise to resolve before continuing. This can only be used inside an async function.
+
+    ```
+        async function myFunction() {
+            let myPromise = new Promise((resolve, reject) => {
+                let success = true;
+                if(success) {
+                    resolve("The operation succeeded");
+                } else {
+                    reject("The operation failed");
+                }
+            });
+
+            let result = await myPromise;
+            console.log(result);
+        }
+
+        myFunction();
+    ```
+
+3. Await
+    - The await keyword is added before a function call to tell the program to wait for the promise to resolve before continuing. This can only be used inside an async function.
+
+    ```
+        async function myFunction() {
+            let myPromise = new Promise((resolve, reject) => {
+                let success = true;
+                if(success) {
+                    resolve("The operation succeeded");
+                } else {
+                    reject("The operation failed");
+                }
+            });
+
+            let result = await myPromise;
+            console.log(result);
+        }
+
+        myFunction();
+    ```
