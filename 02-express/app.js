@@ -48,6 +48,51 @@ app.get("/api/people", (req, res) => {
     data: people,
   });
 });
+
+// PUT REQUEST FROM BROWSER
+app.put("/api/people/:id", (req, res) => {
+  const { id } = req.params;
+  const { name } = req.body;
+  console.log(id, name);
+
+  const person = people.find((person) => person.id === Number(id));
+
+  // If id doesn't exist
+  if (!person) {
+    return res
+      .status(404)
+      .json({ success: false, msg: `no person with id ${id}` });
+  }
+
+  // If  id exists -- Update the data
+  const newPeople = people.map((person) => {
+    if (person.id === Number(id)) {
+      person.name = name;
+    }
+    return person;
+  });
+
+  res.status(200).json({
+    success: true,
+    newPeople,
+  });
+});
+
+// DELETE REQUEST FROM BROWSER
+app.delete("/api/people/:id", (req, res) => {
+  const { id } = req.params;
+
+  const person = people.find((person) => person.id === Number(id));
+
+  if (!person) {
+    res.status(404).json({ success: false, msg: `No person with id ${id}` });
+  }
+
+  const newPeople = people.filter((person) => person.id !== Number(id));
+
+  res.status(200).json({ status: "Success", data: newPeople });
+});
+
 app.listen(5000, () => {
   console.log("server is listening on port 5000...");
 });
