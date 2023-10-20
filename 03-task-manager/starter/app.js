@@ -1,11 +1,18 @@
 const express = require("express");
+const tasks = require("./routes/tasks");
 
 const app = express();
 const port = 3000;
 
-app.get("/hello", (req, res) => {
-  res.send("Task Manager App");
-});
+// middleware
+app.use(express.json()); //-----> to parse json data
+
+// routes
+app.use("/api/v1/tasks", tasks);
+
+// app.get("/hello", (req, res) => {
+//   res.send("Task Manager App");
+// });
 
 // app.get("/api/v1/tasks") -----------> get all the tasks
 // app.post("/api/v1/tasks") ----------> create new task
