@@ -1,16 +1,20 @@
 const Task = require("../models/Task");
 const asyncWrapper = require("../middleware/async");
 const { createCustomError } = require("../errors/custom-error");
+
+// Get All Task
 const getAllTasks = asyncWrapper(async (req, res) => {
   const tasks = await Task.find({});
   res.status(200).json({ tasks });
 });
 
+// Create Task
 const createTask = asyncWrapper(async (req, res) => {
   const task = await Task.create(req.body);
   res.status(201).json({ task });
 });
 
+// Get a Task by ID
 const getTask = asyncWrapper(async (req, res, next) => {
   const { id: taskID } = req.params;
   const task = await Task.findOne({ _id: taskID });
@@ -20,6 +24,8 @@ const getTask = asyncWrapper(async (req, res, next) => {
 
   res.status(200).json({ task });
 });
+
+// Delete a Task
 const deleteTask = asyncWrapper(async (req, res, next) => {
   const { id: taskID } = req.params;
   const task = await Task.findOneAndDelete({ _id: taskID });
@@ -28,6 +34,8 @@ const deleteTask = asyncWrapper(async (req, res, next) => {
   }
   res.status(200).json({ task });
 });
+
+// Update a task
 const updateTask = asyncWrapper(async (req, res, next) => {
   const { id: taskID } = req.params;
 
