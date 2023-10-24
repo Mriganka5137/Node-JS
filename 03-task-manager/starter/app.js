@@ -3,7 +3,7 @@ const tasks = require("./routes/tasks");
 const notFound = require("./middleware/not-found");
 const errorHandlerMiddleware = require("./middleware/error-handler");
 const connectDB = require("./db/connect"); //-----> to connect to the database
-require("dotenv").config();
+require("dotenv").config(); //--- This is required to start
 
 const app = express();
 const port = 3000;
