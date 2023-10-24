@@ -1,5 +1,7 @@
 const express = require("express");
 const tasks = require("./routes/tasks");
+const notFound = require("./middleware/not-found");
+const errorHandlerMiddleware = require("./middleware/error-handler");
 const connectDB = require("./db/connect"); //-----> to connect to the database
 require("dotenv").config();
 
@@ -7,11 +9,15 @@ const app = express();
 const port = 3000;
 
 // middleware
+app.use(express.static("./public")); //-----> to serve static files
 
 app.use(express.json()); //-----> to parse json data
 
 // routes
 app.use("/api/v1/tasks", tasks);
+
+app.use(notFound); //--- Not found route
+app.use(errorHandlerMiddleware); //----Error Handler Middleware
 
 // app.get("/hello", (req, res) => {
 //   res.send("Task Manager App");
