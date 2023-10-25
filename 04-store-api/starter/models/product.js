@@ -10,6 +10,10 @@ const productSchema = new mongoose.Schema({
     type: Number,
     required: [true, "Please provide a price"],
   },
+  featured: {
+    type: Boolean,
+    default: false,
+  },
 
   rating: {
     type: Number,
